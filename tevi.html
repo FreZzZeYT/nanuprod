@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="dark">
-<title>Numără țevi</title>
+<title>Numără țevi Ø110</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#12161a;--panel:#1c2228;--line:#2d363f;--text:#e8edf1;--mute:#8e9aa6;--acc:#ffb020;--ring:#b6f23a;color-scheme:dark}
@@ -33,7 +33,7 @@ input[type=range]{width:100%;accent-color:var(--acc);height:32px}
 </style>
 </head>
 <body>
-<h1>Numără țevi</h1>
+<h1>Numără țevi Ø110 mm</h1>
 <div class="count"><b id="n">0</b><span>țevi</span></div>
 <div class="btns">
   <label class="btn">Fă poză<input id="cam" type="file" accept="image/*" capture="environment"></label>
@@ -51,7 +51,7 @@ input[type=range]{width:100%;accent-color:var(--acc);height:32px}
     <button class="btn sec" id="undo">Anulează</button>
     <button class="btn sec" id="reset">Șterge corecțiile</button>
   </div>
-  <div class="hint">Atinge o țeavă marcată ca să o ștergi. Atinge un loc gol ca să adaugi o țeavă. Dacă sunt prea multe sau prea puține cercuri, mișcă „Sensibilitate" și „Mărime țeavă".</div>
+  <div class="hint">Atinge o țeavă marcată ca să o ștergi. Atinge un loc gol ca să adaugi o țeavă. Toate țevile sunt de 110 mm, deci cercurile trebuie să fie de aceeași mărime: potrivește „Mărime țeavă” după o țeavă din poză. Dacă sunt prea multe sau prea puține cercuri, mișcă „Sensibilitate" și „Mărime țeavă".</div>
 </div>
 <script>
 const cv=document.getElementById('cv'),ctx=cv.getContext('2d',{willReadFrequently:true});
@@ -118,8 +118,8 @@ function detect(){
   if(!acc)return;
   const t=.7-.055*(+$('sens').value),k0=+$('size').value,R=rs[k0];
   let lo=0,hi=rs.length-1;
-  while(lo<rs.length-1&&rs[lo]<.8*R)lo++;
-  while(hi>0&&rs[hi]>1.25*R)hi--;
+  while(lo<rs.length-1&&rs[lo]<.88*R)lo++;
+  while(hi>0&&rs[hi]>1.14*R)hi--;
   const best=new Float32Array(WH),bk=new Uint8Array(WH);
   for(let k=lo;k<=hi;k++){
     const p=acc.subarray(k*WH,(k+1)*WH),inv=1/(6.283*rs[k]);
